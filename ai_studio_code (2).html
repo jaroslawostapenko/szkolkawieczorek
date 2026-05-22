@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Szkółka Wieczorek - Drzewa, Krzewy Owocowe i Róże</title>
+    <meta name="description" content="Szkółka Wieczorek. Producent drzew owocowych, krzewów jagodowych i róż. Tradycja, jakość i wieloletnie doświadczenie.">
+    <meta name="keywords" content="szkółka drzew, krzewy owocowe, róże, sadzonki, producent roślin">
+    <meta name="author" content="mqttwebs">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://szkolkawieczorek.websweos.com">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           1. ZMIENNE CSS
+           ========================================================================== */
+        :root {
+            --primary-color: #2b5c3a;
+            --primary-dark: #1e4228;
+            --primary-light: #eaf2eb;
+            --accent-color: #d4a373;
+            --accent-hover: #c48b52;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --bg-body: #fdfdfd;
+            --bg-section: #f5f7f5;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            --radius-md: 8px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+            --transition-normal: 0.3s ease;
+            --header-height: 80px;
+        }
+
+        /* ==========================================================================
+           2. RESET BAZOWY
+           ========================================================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--text-main); background-color: var(--bg-body); line-height: 1.7; overflow-x: hidden; }
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        button { font-family: inherit; border: none; outline: none; cursor: pointer; }
+
+        /* ==========================================================================
+           3. TYPOGRAFIA I STRUKTURA
+           ========================================================================== */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-dark); font-weight: 700; line-height: 1.3; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
+        h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; text-align: center; }
+        h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; }
+        .section-subtitle { text-align: center; color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto 3rem; }
+        
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+        .section { padding: 5rem 0; }
+        .section-bg { background-color: var(--bg-section); }
+
+        /* ==========================================================================
+           4. PRZYCISKI
+           ========================================================================== */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.8rem 2rem; font-family: var(--font-heading); font-weight: 600; font-size: 1rem; border-radius: var(--radius-full); transition: all var(--transition-normal); text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-primary { background-color: var(--primary-color); color: var(--white); }
+        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-outline { background-color: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-outline:hover { background-color: var(--white); color: var(--primary-dark); }
+
+        /* ==========================================================================
+           5. NAGŁÓWEK I NAWIGACJA
+           ========================================================================== */
+        .header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background-color: var(--white); box-shadow: var(--shadow-sm); z-index: 1000; transition: all var(--transition-normal); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+        .logo-text { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-menu { display: flex; gap: 2rem; align-items: center; }
+        .nav-link { font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem; color: var(--text-main); text-transform: uppercase; position: relative; padding: 0.5rem 0; transition: color 0.2s; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--accent-color); transition: width 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--primary-color); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        
+        .hamburger { display: none; background: none; z-index: 1001; }
+        .hamburger-line { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: var(--primary-dark); transition: all 0.3s ease; }
+        .hamburger.active .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+        .hamburger.active .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* ==========================================================================
+           6. HERO (TŁO: BAR01.jpg)
+           ========================================================================== */
+        .hero { margin-top: var(--header-height); height: calc(100vh - var(--header-height)); min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(30, 66, 40, 0.9), rgba(30, 66, 40, 0.6)); z-index: 2; }
+        .hero-content { position: relative; z-index: 3; text-align: center; color: var(--white); max-width: 900px; padding: 0 2rem; animation: fadeUp 1s ease forwards; }
+        .hero-content h1 { color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--primary-light); }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ==========================================================================
+           7. O NAS
+           ========================================================================== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg); }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .about-image:hover img { transform: scale(1.05); }
+        .about-content p { color: var(--text-muted); font-size: 1.05rem; }
+        .timeline { margin-top: 3rem; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; height: 100%; width: 2px; background-color: var(--border-color); }
+        .timeline-item { position: relative; padding-left: 45px; margin-bottom: 2rem; }
+        .timeline-dot { position: absolute; left: 7px; top: 5px; width: 18px; height: 18px; background-color: var(--primary-color); border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 0 0 2px var(--primary-color); }
+        .timeline-date { font-family: var(--font-heading); font-weight: 700; color: var(--accent-color); font-size: 1.1rem; }
+        .timeline-title { font-weight: 600; color: var(--primary-dark); }
+        .timeline-text { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* ==========================================================================
+           8. OFERTA (OFERTA01, OFERTA02, OFERTA03)
+           ========================================================================== */
+        .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .offer-card { background-color: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .offer-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--primary-color); }
+        .offer-img-box { position: relative; height: 250px; overflow: hidden; }
+        .offer-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .offer-card:hover .offer-img-box img { transform: scale(1.1); }
+        .offer-card-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .offer-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-muted); }
+        .offer-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+
+        /* ==========================================================================
+           9. GALERIA (SW01 do SW10)
+           ========================================================================== */
+        .gallery-nav { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .gallery-btn { background-color: transparent; border: 1px solid var(--border-color); padding: 0.6rem 1.5rem; border-radius: var(--radius-full); font-family: var(--font-heading); font-weight: 600; transition: all 0.3s; }
+        .gallery-btn.active, .gallery-btn:hover { background-color: var(--primary-color); color: var(--white); border-color: var(--primary-color); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(30, 66, 40, 0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay span { color: var(--white); font-family: var(--font-heading); font-weight: 600; text-transform: uppercase; transform: translateY(20px); transition: transform 0.3s; }
+        .gallery-item:hover .gallery-overlay span { transform: translateY(0); }
+        
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); z-index: 2000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.active { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 90%; max-height: 90vh; position: relative; }
+        .lightbox-img { max-width: 100%; max-height: 90vh; object-fit: contain; }
+        .lightbox-close { position: absolute; top: -40px; right: 0; color: var(--white); font-size: 2rem; background: none; padding: 10px; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: var(--white); font-size: 3rem; background: none; padding: 20px; }
+        .lightbox-prev { left: -60px; } .lightbox-next { right: -60px; }
+
+        /* ==========================================================================
+           10. FAQ (STRZAŁKI W DÓŁ)
+           ========================================================================== */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background-color: var(--white); overflow: hidden; }
+        .faq-question { padding: 1.5rem 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question h4 { margin: 0; font-size: 1.1rem; }
+        
+        /* Strzałka SVG skierowana w dół */
+        .faq-icon { width: 24px; height: 24px; color: var(--primary-color); transition: transform 0.4s ease; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: 15px; }
+        
+        /* Po kliknięciu odwraca się do góry */
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background-color: var(--bg-section); }
+        .faq-answer-inner { padding: 0 2rem 1.5rem 2rem; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 1rem; padding-top: 1rem; }
+
+        /* ==========================================================================
+           11. KONTAKT (BEZ FORMULARZA)
+           ========================================================================== */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .contact-card { background-color: var(--white); padding: 3rem 2rem; border-radius: var(--radius-md); text-align: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: transform 0.3s; }
+        .contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary-color); }
+        .contact-icon { width: 60px; height: 60px; background-color: var(--primary-light); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; }
+        .contact-card a { color: var(--primary-color); font-weight: 600; }
+
+        /* ==========================================================================
+           12. STOPKA
+           ========================================================================== */
+        .footer { background-color: var(--primary-dark); color: var(--white); padding: 4rem 0 1rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { margin-bottom: 1.5rem; position: relative; padding-bottom: 0.5rem; color: var(--white); }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--accent-color); }
+        .footer-text, .footer-links a { color: #b8c9bc; }
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; text-align: center; color: #b8c9bc; font-size: 0.9rem; }
+        .footer-bottom a { color: var(--accent-color); font-weight: 600; }
+
+        /* ==========================================================================
+           13. MEDIA QUERIES (RWD)
+           ========================================================================== */
+        @media (max-width: 992px) { .about-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-menu { position: fixed; top: var(--header-height); left: -100%; width: 100%; height: calc(100vh - var(--header-height)); background-color: var(--white); flex-direction: column; padding-top: 2rem; transition: left 0.3s; }
+            .nav-menu.active { left: 0; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .lightbox-prev, .lightbox-next { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAGŁÓWEK -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#hero" class="logo-text">Szkółka Wieczorek</a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#hero" class="nav-link active">Strona Główna</a></li>
+                    <li><a href="#o-nas" class="nav-link">O nas</a></li>
+                    <li><a href="#oferta" class="nav-link">Oferta</a></li>
+                    <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Otwórz menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO (Tło: BAR01.jpg) -->
+    <section class="hero" id="hero">
+        <img src="https://szkolkawieczorek.pol-agro.pl/img/BAR01.jpg" alt="Szkółka Wieczorek Tło" class="hero-bg" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Drzewa, Krzewy Owocowe i Róże</h1>
+            <p>Od pokoleń dostarczamy najwyższej jakości materiał szkółkarski. Tradycja, nowoczesność i pasja do roślin doceniana w całej Europie.</p>
+            <div class="hero-buttons">
+                <a href="#oferta" class="btn btn-primary">Sprawdź Ofertę</a>
+                <a href="#kontakt" class="btn btn-outline">Skontaktuj się</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- O NAS -->
+    <section class="section" id="o-nas">
+        <div class="container">
+            <h2>Historia i Misja</h2>
+            <p class="section-subtitle">Poznaj nasze korzenie, dzięki którym możemy dostarczać Ci rośliny doskonałej jakości.</p>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Gospodarstwo z tradycjami</h3>
+                    <p>Nasza firma to kontynuacja wielopokoleniowej pasji ogrodniczej. Szkółka Drzew, Krzewów Owocowych i Róż specjalizuje się w masowej, a zarazem rzetelnej produkcji drzew owocowych, krzewów jagodowych oraz krzewów róż.</p>
+                    <p>Produkowany przez nas materiał jest gotowy do bezpośredniej sprzedaży. Sprzedajemy go z gołym korzeniem, w formie starannie pakowanej, jak również w nowoczesnych pojemnikach.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">1987</div>
+                            <div class="timeline-title">Założenie Szkółki</div>
+                            <div class="timeline-text">Oficjalne rozpoczęcie profesjonalnej działalności na szeroką skalę.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">Rozwój</div>
+                            <div class="timeline-title">Ekspansja na nowe gatunki</div>
+                            <div class="timeline-text">Wprowadzenie setek nowych, licencyjnych odmian owocowych i ozdobnych.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <!-- Wykorzystanie jednego ze zdjęć z galerii jako ilustracji -->
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW01.jpg" alt="Nasza szkółka" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA (Linki: OFERTA01, OFERTA02, OFERTA03) -->
+    <section class="section section-bg" id="oferta">
+        <div class="container">
+            <h2>Nasza Oferta Asortymentowa</h2>
+            <p class="section-subtitle">Specjalizujemy się w cyklicznej uprawie. Zobacz, co przygotowaliśmy w tym sezonie.</p>
+            
+            <div class="offer-grid">
+                
+                <!-- Karta 1 -->
+                <div class="offer-card">
+                    <div class="offer-img-box">
+                        <img src="https://szkolkawieczorek.pol-agro.pl/img/OFERTA01.jpg" alt="Oferta 1" />
+                    </div>
+                    <div class="offer-card-body">
+                        <h3>Drzewa Owocowe</h3>
+                        <p>Dostarczamy najwyższej jakości, zdrowe odmiany drzew. Asortyment roczny to setki tysięcy drzew w najlepszym gatunku.</p>
+                        <ul class="offer-list">
+                            <li>Jabłonie i Grusze</li>
+                            <li>Czereśnie i Śliwy</li>
+                            <li>Brzoskwinie i Morele</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Karta 2 -->
+                <div class="offer-card">
+                    <div class="offer-img-box">
+                        <img src="https://szkolkawieczorek.pol-agro.pl/img/OFERTA02.jpg" alt="Oferta 2" />
+                    </div>
+                    <div class="offer-card-body">
+                        <h3>Krzewy Róż</h3>
+                        <p>Zajmujemy się produkcją milionów krzewów róż. W ofercie posiadamy ponad 300 starannie dobranych i licencjonowanych odmian.</p>
+                        <ul class="offer-list">
+                            <li>Odmiany rabatowe i pnące</li>
+                            <li>Wielkokwiatowe i miniaturowe</li>
+                            <li>Formy pienne</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Karta 3 -->
+                <div class="offer-card">
+                    <div class="offer-img-box">
+                        <img src="https://szkolkawieczorek.pol-agro.pl/img/OFERTA03.jpg" alt="Oferta 3" />
+                    </div>
+                    <div class="offer-card-body">
+                        <h3>Krzewy Jagodowe</h3>
+                        <p>Bogata oferta zdrowych sadzonek dających ogromne, pyszne zbiory każdego roku. Gwarancja szybkiego przyjęcia.</p>
+                        <ul class="offer-list">
+                            <li>Porzeczki czarne i czerwone</li>
+                            <li>Agresty i Maliny</li>
+                            <li>Borówki i jeżyny</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA (Linki: SW01 do SW10) -->
+    <section class="section" id="galeria">
+        <div class="container">
+            <h2>Galeria Naszych Upraw</h2>
+            <p class="section-subtitle">Oto wizualizacje prosto z naszych pól produkcyjnych i parków maszynowych.</p>
+            
+            <div class="gallery-nav">
+                <button class="gallery-btn active" data-filter="all">Wszystkie</button>
+                <button class="gallery-btn" data-filter="uprawy">Uprawy</button>
+                <button class="gallery-btn" data-filter="detale">Detale</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                
+                <div class="gallery-item" data-category="uprawy">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW01.jpg" alt="Galeria 01" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+                
+                <div class="gallery-item" data-category="detale">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW02.jpg" alt="Galeria 02" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="uprawy">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW03.jpg" alt="Galeria 03" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="detale">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW04.jpg" alt="Galeria 04" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="uprawy">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW05.jpg" alt="Galeria 05" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="detale">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW06.jpg" alt="Galeria 06" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="uprawy">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW07.jpg" alt="Galeria 07" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="detale">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW08.jpg" alt="Galeria 08" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="uprawy">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW09.jpg" alt="Galeria 09" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+                <div class="gallery-item" data-category="detale">
+                    <img src="https://szkolkawieczorek.pol-agro.pl/img/photos/SW10.jpg" alt="Galeria 10" />
+                    <div class="gallery-overlay"><span>Powiększ</span></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <button class="lightbox-close" id="lightboxClose">&times;</button>
+                <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</button>
+                <img src="" alt="Zoom" class="lightbox-img" id="lightboxImg">
+                <button class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (STRZAŁKI W DÓŁ) -->
+    <section class="section section-bg" id="faq">
+        <div class="container">
+            <h2>Często Zadawane Pytania</h2>
+            <p class="section-subtitle">Rozwiej swoje wątpliwości przed złożeniem zamówienia.</p>
+            
+            <div class="faq-container">
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>W jakiej formie sprzedajecie rośliny?</h4>
+                        <!-- Ikona strzałki w dół -->
+                        <div class="faq-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Materiał szkółkarski sprzedajemy z całkowicie gołym korzeniem, w formie bezpiecznie pakowanej (zbalotowanej) oraz osadzonej w twardych pojemnikach plastikowych.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Gdzie eksportujecie swoje produkty?</h4>
+                        <div class="faq-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Nasze produkty sprzedawane są na terenie całej Europy. Główne rynki to m.in.: Szwecja, Holandia, Francja, Dania, Litwa, Rosja i Ukraina.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Jak złożyć zamówienie hurtowe?</h4>
+                        <div class="faq-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Zamówienia najlepiej składać telefonicznie lub pisząc na podany e-mail. Po przeanalizowaniu potrzeb, sporządzamy dokładną ofertę oraz wycenę.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Czy można zobaczyć uprawy na żywo?</h4>
+                        <div class="faq-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Tak, po wcześniejszym umówieniu telefonicznym oprowadzamy klientów biznesowych po naszych polach produkcyjnych.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAKT (TYLKO KARTY Z DANYMI) -->
+    <section class="section" id="kontakt">
+        <div class="container">
+            <h2>Dane Kontaktowe</h2>
+            <p class="section-subtitle">Jeżeli jesteś zainteresowany współpracą, skontaktuj się z nami bezpośrednio.</p>
+            
+            <div class="contact-grid">
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <h4>Lokalizacja</h4>
+                    <p>ul. Zaborska 10</p>
+                    <p>62-021 Paczkowo, Puszczykowo Zaborze</p>
+                    <p>Polska / Poland</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </div>
+                    <h4>Telefony</h4>
+                    <p>Kom: <a href="tel:+48606200640">+48 606 200 640</a></p>
+                    <p>Kom: <a href="tel:+48784603197">+48 784 603 197</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <h4>E-mail</h4>
+                    <p>Wyślij zapytanie:</p>
+                    <p><a href="mailto:szkolka.wieczorek@interia.pl">szkolka.wieczorek@interia.pl</a></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STOPKA -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <h4>Szkółka Wieczorek</h4>
+                    <p class="footer-text">
+                        Nowoczesne, rodzinne gospodarstwo z wieloletnim doświadczeniem w hodowli roślin, dostarczające towar najwyższej jakości.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Szybka Nawigacja</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Strona Główna</a></li>
+                        <li><a href="#o-nas">Historia Firmy</a></li>
+                        <li><a href="#oferta">Nasza Oferta</a></li>
+                        <li><a href="#galeria">Zdjęcia Upraw</a></li>
+                        <li><a href="#kontakt">Gdzie jesteśmy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Godziny Otwarcia</h4>
+                    <p class="footer-text"><strong>Pon - Pt:</strong> 08:00 - 16:00</p>
+                    <p class="footer-text"><strong>Sobota:</strong> Kontakt tel.</p>
+                    <p class="footer-text"><strong>Niedziela:</strong> Zamknięte</p>
+                </div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Szkółka Wieczorek. Wszelkie prawa zastrzeżone.</p>
+                <p>Projekt i realizacja: strona ma być zrobiona przez firmę <a href="#" target="_blank">mqttwebs</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SKRYPTY JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            /* Aktualny rok */
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            /* Mobile Menu */
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            if (hamburger && navMenu) {
+                const toggleMenu = () => {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                };
+
+                hamburger.addEventListener('click', toggleMenu);
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navMenu.classList.contains('active')) toggleMenu();
+                    });
+                });
+            }
+
+            /* Efekt Scrollowania Header'a */
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+                    header.style.height = '70px';
+                } else {
+                    header.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                    header.style.height = '80px';
+                }
+            });
+
+            /* Active State nawigacji */
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', () => {
+                let scrollPos = window.scrollY + 100; 
+                sections.forEach(section => {
+                    if (scrollPos > section.offsetTop && scrollPos < (section.offsetTop + section.offsetHeight)) {
+                        navLinks.forEach(a => {
+                            a.classList.remove('active');
+                            if (section.getAttribute('id') === a.getAttribute('href').substring(1)) {
+                                a.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+
+            /* Smooth Scroll */
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            /* FAQ Akordeon (ze strzałkami) */
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('active');
+                    
+                    // Zamknij wszystkie
+                    faqItems.forEach(el => {
+                        el.classList.remove('active');
+                        el.querySelector('.faq-answer').style.maxHeight = null;
+                    });
+                    
+                    // Otwórz kliknięty
+                    if (!isOpen) {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            });
+
+            /* Filtr Galerii */
+            const filterBtns = document.querySelectorAll('.gallery-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filter === 'all' || filter === category) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            /* Lightbox */
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const lightboxPrev = document.getElementById('lightboxPrev');
+            const lightboxNext = document.getElementById('lightboxNext');
+            
+            let currentImageIndex = 0;
+            let visibleImages = [];
+
+            const updateVisibleImages = () => {
+                visibleImages = Array.from(galleryItems)
+                    .filter(item => item.style.display !== 'none')
+                    .map(item => item.querySelector('img').src);
+            };
+
+            const showLightbox = (src) => {
+                updateVisibleImages();
+                currentImageIndex = visibleImages.indexOf(src);
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+            };
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    showLightbox(item.querySelector('img').src);
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('active'); });
+
+            lightboxNext.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+                lightboxImg.src = visibleImages[currentImageIndex];
+            });
+
+            lightboxPrev.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+                lightboxImg.src = visibleImages[currentImageIndex];
+            });
+
+        });
+    </script>
+</body>
+</html>
